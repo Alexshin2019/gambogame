@@ -1,0 +1,116 @@
+{
+  "screenSize": {
+    "width": {
+      "value": 1152,
+      "type": "number",
+      "description": "屏幕宽度"
+    },
+    "height": {
+      "value": 768,
+      "type": "number",
+      "description": "屏幕高度"
+    }
+  },
+  "debugConfig": {
+    "debug": {
+      "value": false,
+      "type": "boolean",
+      "description": "开启调试模式"
+    },
+    "debugShowBody": {
+      "value": false,
+      "type": "boolean",
+      "description": "显示碰撞体"
+    },
+    "debugShowStaticBody": {
+      "value": false,
+      "type": "boolean",
+      "description": "显示静态碰撞体"
+    },
+    "debugShowVelocity": {
+      "value": false,
+      "type": "boolean",
+      "description": "显示速度向量"
+    }
+  },
+  "renderConfig": {
+    "pixelArt": {
+      "value": true,
+      "type": "boolean",
+      "description": "是否启用像素艺术渲染"
+    }
+  },
+  "gameConfig": {
+    "gridRows": {
+      "value": 7,
+      "type": "number",
+      "description": "消除网格行数"
+    },
+    "gridCols": {
+      "value": 11,
+      "type": "number",
+      "description": "消除网格列数"
+    },
+    "cellSize": {
+      "value": 64,
+      "type": "number",
+      "description": "单元格像素大小"
+    },
+    "gameTime": {
+      "value": 180,
+      "type": "number",
+      "description": "游戏时间（秒）"
+    },
+    "minMatchCount": {
+      "value": 3,
+      "type": "number",
+      "description": "最少消除数量"
+    },
+    "trashTypes": {
+      "value": 8,
+      "type": "number",
+      "description": "垃圾类型数量"
+    }
+  },
+  "turtleConfig": {
+    "initialPosition": {
+      "value": 0,
+      "type": "number",
+      "description": "乌龟初始位置"
+    },
+    "targetPosition": {
+      "value": 400,
+      "type": "number",
+      "description": "乌龟目标位置（到达海边）"
+    },
+    "moveDistance": {
+      "value": 20,
+      "type": "number",
+      "description": "每次消除后乌龟前进距离"
+    }
+  },
+  "audioConfig": {
+    "musicVolume": {
+      "value": 0.6,
+      "type": "number",
+      "description": "背景音乐音量"
+    },
+    "soundVolume": {
+      "value": 0.3,
+      "type": "number",
+      "description": "音效音量"
+    }
+  },
+  "loadingConfig": {
+    "blackScreenDuration": {
+      "value": 2000,
+      "type": "number",
+      "description": "黑屏等待时间（毫秒）"
+    },
+    "enableBlackScreen": {
+      "value": true,
+      "type": "boolean",
+      "description": "是否启用黑屏等待阶段"
+    }
+  }
+}
