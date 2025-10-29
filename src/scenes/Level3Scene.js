@@ -5,13 +5,14 @@ export default class Level3Scene extends GameScene {
   constructor() {
     super({ key: 'Level3Scene' })
     
-    // 레벨 3 설정: 어려움 난이도
+    // 레벨 3 설정: 어려움 난이도 (겨울 빙하 테마)
     this.levelConfig = {
       timeLimit: 120,        // 2분
       trashTypes: 7,         // 7가지 쓰레기 사용, 난이도 증가
-      levelName: 'Rocky Shore',
+      levelName: 'Frozen Cliffs',
       difficulty: 'Hard',
-      nextLevel: 'Level4Scene'
+      nextLevel: 'Level4Scene',
+      background: 'aurora_ice_background'
     }
   }
 

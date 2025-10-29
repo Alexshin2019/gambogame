@@ -35,7 +35,7 @@ export default class MainMenuScene extends Phaser.Scene {
 
   createBackground() {
     // 새로운 시작 페이지 배경 이미지 (텍스트 없음)
-    this.titleBackground = this.add.image(screenSize.width.value / 2, screenSize.height.value / 2, 'beach_turtle_rescue_title_background_no_text')
+    this.titleBackground = this.add.image(screenSize.width.value / 2, screenSize.height.value / 2, 'winter_ice_rescue_title_background')
     
     // 화면에 맞게 확대/축소 비율 계산 (이미지 비율 유지)
     const bgScaleX = screenSize.width.value / 1536 // 이미지 원본 너비는 1536
@@ -46,7 +46,7 @@ export default class MainMenuScene extends Phaser.Scene {
 
   initAudio() {
     this.uiClickSound = this.sound.add('ui_click_sound', { volume: audioConfig.soundVolume.value })
-    this.backgroundMusic = this.sound.add('summer_beach_vibes', {
+    this.backgroundMusic = this.sound.add('winter_wind_chill', {
       volume: audioConfig.musicVolume.value * 0.3,
       loop: true
     })

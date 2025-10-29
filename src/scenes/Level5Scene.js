@@ -5,13 +5,14 @@ export default class Level5Scene extends GameScene {
   constructor() {
     super({ key: 'Level5Scene' })
     
-    // 레벨 5 설정: 마스터 난이도
+    // 레벨 5 설정: 마스터 난이도 (겨울 빙하 테마)
     this.levelConfig = {
       timeLimit: 60,         // 1분! 극한 도전
       trashTypes: 8,         // 모든 8가지 쓰레기 유형 (최종 도전)
-      levelName: 'Coral Reef',
+      levelName: 'Arctic Aurora',
       difficulty: 'Master',
-      nextLevel: null        // 마지막 레벨
+      nextLevel: null,        // 마지막 레벨
+      background: 'aurora_ice_background'
     }
   }
 

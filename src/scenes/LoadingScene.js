@@ -5,7 +5,7 @@ export default class LoadingScene extends Phaser.Scene {
   constructor() {
     super({ key: 'LoadingScene' })
     this.loadingProgress = 0
-    this.turtleIcons = []
+    this.penguinIcons = []
     this.blackScreenDuration = loadingConfig.blackScreenDuration.value // 검은 화면 대기 시간 (밀리초)
     this.enableBlackScreen = loadingConfig.enableBlackScreen.value // 검은 화면 대기 단계 활성화 여부
   }
@@ -13,7 +13,7 @@ export default class LoadingScene extends Phaser.Scene {
   preload() {
     // preload 단계에서 로딩 화면에 필요한 기본 자료를 먼저 로드합니다.
     this.load.image('loading_screen_background', 'https://cdn-game-mcp.gambo.ai/68695e6c-a5b6-4e9d-a9dc-a6cf1fe21719/images/loading_screen_background.png')
-    this.load.image('loading_turtle_icon', 'https://cdn-game-mcp.gambo.ai/edfceaf7-96d4-48f9-bf2b-204ca09edfe2/images/loading_turtle_icon.png')
+    this.load.image('loading_penguin_icon', 'https://cdn-game-mcp.gambo.ai/winter-theme/loading_penguin_icon.png')
     
     // 기본 자료 로드가 완료된 후 로딩 화면을 생성합니다.
     this.load.once('complete', () => {
@@ -91,16 +91,16 @@ export default class LoadingScene extends Phaser.Scene {
     const centerX = screenSize.width.value / 2
     const centerY = screenSize.height.value / 2
     
-    // 메인 거북이 아이콘
-    this.mainTurtle = this.add.image(centerX, centerY - 50, 'loading_turtle_icon')
+    // 메인 펭귄 아이콘
+    this.mainPenguin = this.add.image(centerX, centerY - 50, 'loading_penguin_icon')
     
-    // 거북이 아이콘 확대/축소 계산
-    const turtleScale = 0.2 // 적당한 크기
-    this.mainTurtle.setScale(turtleScale)
+    // 펭귄 아이콘 확대/축소 계산
+    const penguinScale = 0.2 // 적당한 크기
+    this.mainPenguin.setScale(penguinScale)
     
-    // 거북이가 천천히 회전하는 애니메이션 생성
+    // 펭귄이 천천히 회전하는 애니메이션 생성
     this.tweens.add({
-      targets: this.mainTurtle,
+      targets: this.mainPenguin,
       rotation: Math.PI * 2,
       duration: 3000,
       repeat: -1,
@@ -109,7 +109,7 @@ export default class LoadingScene extends Phaser.Scene {
     
     // 위아래로 움직이는 애니메이션 생성
     this.tweens.add({
-      targets: this.mainTurtle,
+      targets: this.mainPenguin,
       y: centerY - 30,
       duration: 1500,
       yoyo: true,
@@ -117,28 +117,28 @@ export default class LoadingScene extends Phaser.Scene {
       ease: 'Sine.easeInOut'
     })
     
-    // 메인 거북이 주위를 도는 작은 거북이들 생성
-    this.createOrbitalTurtles(centerX, centerY - 50)
+    // 메인 펭귄 주위를 도는 작은 펭귄들 생성
+    this.createOrbitalPenguins(centerX, centerY - 50)
   }
 
-  createOrbitalTurtles(centerX, centerY) {
-    const numTurtles = 5
+  createOrbitalPenguins(centerX, centerY) {
+    const numPenguins = 5
     const radius = 100
     
-    for (let i = 0; i < numTurtles; i++) {
-      const angle = (i / numTurtles) * Math.PI * 2
+    for (let i = 0; i < numPenguins; i++) {
+      const angle = (i / numPenguins) * Math.PI * 2
       const x = centerX + Math.cos(angle) * radius
       const y = centerY + Math.sin(angle) * radius
       
-      const turtle = this.add.image(x, y, 'loading_turtle_icon')
-      turtle.setScale(0.08) // 더 작은 크기
-      turtle.setAlpha(0.6) // 반투명 효과
+      const penguin = this.add.image(x, y, 'loading_penguin_icon')
+      penguin.setScale(0.08) // 더 작은 크기
+      penguin.setAlpha(0.6) // 반투명 효과
       
-      this.turtleIcons.push(turtle)
+      this.penguinIcons.push(penguin)
       
-      // 각 작은 거북이가 중심을 중심으로 회전하지만 속도는 다릅니다.
+      // 각 작은 펭귄이 중심을 중심으로 회전하지만 속도는 다릅니다.
       this.tweens.add({
-        targets: turtle,
+        targets: penguin,
         rotation: Math.PI * 2,
         duration: 4000 + i * 500, // 다른 속도
         repeat: -1,

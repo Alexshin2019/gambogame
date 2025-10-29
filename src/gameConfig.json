@@ -72,21 +72,21 @@
       "description": "쓰레기 유형 수"
     }
   },
-  "turtleConfig": {
+  "penguinConfig": {
     "initialPosition": {
       "value": 0,
       "type": "number",
-      "description": "거북이 초기 위치"
+      "description": "펭귄 초기 위치"
     },
     "targetPosition": {
       "value": 400,
       "type": "number",
-      "description": "거북이 목표 위치 (바다 도착)"
+      "description": "펭귄 목표 위치 (빙하 바다 도착)"
     },
     "moveDistance": {
       "value": 20,
       "type": "number",
-      "description": "매 제거 후 거북이 이동 거리"
+      "description": "매 제거 후 펭귄 이동 거리"
     }
   },
   "audioConfig": {

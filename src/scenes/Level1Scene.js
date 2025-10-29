@@ -5,13 +5,14 @@ export default class Level1Scene extends GameScene {
   constructor() {
     super({ key: 'Level1Scene' })
     
-    // 레벨 1 설정: 쉬움 난이도
+    // 레벨 1 설정: 쉬움 난이도 (겨울 빙하 테마)
     this.levelConfig = {
       timeLimit: 180,        // 3분
       trashTypes: 4,         // 4가지 쓰레기만, 매칭 단순화
-      levelName: 'Beach Cleanup',
+      levelName: 'Ice Cleanup',
       difficulty: 'Easy',
-      nextLevel: 'Level2Scene'
+      nextLevel: 'Level2Scene',
+      background: 'snowy_ice_background'
     }
   }
 

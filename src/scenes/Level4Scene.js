@@ -5,13 +5,14 @@ export default class Level4Scene extends GameScene {
   constructor() {
     super({ key: 'Level4Scene' })
     
-    // 레벨 4 설정: 전문가 난이도
+    // 레벨 4 설정: 전문가 난이도 (겨울 빙하 테마)
     this.levelConfig = {
       timeLimit: 90,         // 1.5분
       trashTypes: 8,         // 모든 8가지 쓰레기 (새로운 유리병 및 알루미늄 상자 포함)
-      levelName: 'Storm Cleanup',
+      levelName: 'Blizzard Cleanup',
       difficulty: 'Expert',
-      nextLevel: 'Level5Scene'
+      nextLevel: 'Level5Scene',
+      background: 'frozen_ocean_background'
     }
   }
 

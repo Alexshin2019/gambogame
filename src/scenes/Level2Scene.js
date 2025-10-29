@@ -5,13 +5,14 @@ export default class Level2Scene extends GameScene {
   constructor() {
     super({ key: 'Level2Scene' })
     
-    // 레벨 2 설정: 보통 난이도
+    // 레벨 2 설정: 보통 난이도 (겨울 빙하 테마)
     this.levelConfig = {
       timeLimit: 150,        // 2.5분
       trashTypes: 5,         // 5가지 쓰레기
-      levelName: 'Tidal Pool',
+      levelName: 'Ice Floe',
       difficulty: 'Medium',
-      nextLevel: 'Level3Scene'
+      nextLevel: 'Level3Scene',
+      background: 'ice_floe_background'
     }
   }
 

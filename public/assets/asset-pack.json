@@ -18,38 +18,38 @@
       },
       {
         "type": "image",
-        "key": "beach_turtle_rescue_title_background_no_text",
-        "url": "https://cdn-game-mcp.gambo.ai/41e326f3-6a16-4f2d-a01d-5766769a4f9a/images/beach_turtle_rescue_title_background_no_text.png"
+        "key": "winter_ice_rescue_title_background",
+        "url": "https://cdn-game-mcp.gambo.ai/winter-theme/penguin_rescue_title_background.png"
       },
       {
         "type": "image",
-        "key": "cartoon_beach_background",
-        "url": "https://cdn-game-mcp.gambo.ai/02e69ba6-b39c-4cba-995f-083ee419f782/images/cartoon_beach_background.png"
+        "key": "snowy_ice_background",
+        "url": "https://cdn-game-mcp.gambo.ai/winter-theme/snowy_ice_background.png"
       },
       {
         "type": "image",
-        "key": "new_beach_background",
-        "url": "https://cdn-game-mcp.gambo.ai/059a9bc5-42f0-4ba9-86b0-0dc44d65f685/images/new_beach_background.png"
+        "key": "aurora_ice_background",
+        "url": "https://cdn-game-mcp.gambo.ai/winter-theme/aurora_ice_background.png"
       },
       {
         "type": "image",
-        "key": "bright_beach_background",
-        "url": "https://cdn-game-mcp.gambo.ai/f1267258-48af-4e37-9d4f-d2e3157863d5/images/bright_beach_background.png"
+        "key": "frozen_ocean_background",
+        "url": "https://cdn-game-mcp.gambo.ai/winter-theme/frozen_ocean_background.png"
       },
       {
         "type": "image",
-        "key": "light_beach_background",
-        "url": "https://cdn-game-mcp.gambo.ai/bf5765c0-5f4f-4a10-87e6-36110dc164d6/images/light_beach_background.png"
+        "key": "ice_floe_background",
+        "url": "https://cdn-game-mcp.gambo.ai/winter-theme/ice_floe_background.png"
       },
       {
         "type": "image",
-        "key": "animated_ocean_layer",
-        "url": "https://cdn-game-mcp.gambo.ai/46477854-f180-43b1-9840-a53d42182e02/images/animated_ocean_layer.png"
+        "key": "animated_ice_layer",
+        "url": "https://cdn-game-mcp.gambo.ai/winter-theme/animated_ice_layer.png"
       },
       {
         "type": "image",
-        "key": "bright_ocean_with_waves",
-        "url": "https://cdn-game-mcp.gambo.ai/83f1cc87-b76a-4e49-9b13-44668b076d68/images/bright_ocean_with_waves.png"
+        "key": "frozen_ocean_with_ice",
+        "url": "https://cdn-game-mcp.gambo.ai/winter-theme/frozen_ocean_with_ice.png"
       }
     ]
   },
@@ -57,28 +57,28 @@
     "files": [
       {
         "type": "image",
-        "key": "loading_turtle_icon",
-        "url": "https://cdn-game-mcp.gambo.ai/edfceaf7-96d4-48f9-bf2b-204ca09edfe2/images/loading_turtle_icon.png"
+        "key": "loading_penguin_icon",
+        "url": "https://cdn-game-mcp.gambo.ai/winter-theme/loading_penguin_icon.png"
       },
       {
         "type": "image",
         "key": "game_title",
-        "url": "https://cdn-game-mcp.gambo.ai/25bdbb7e-45fb-4a10-b4bb-67a02130a8c1/images/beach_turtle_rescue_clean_title.png"
+        "url": "https://cdn-game-mcp.gambo.ai/winter-theme/penguin_ice_rescue_title.png"
       },
       {
         "type": "image",
-        "key": "turtle_victory_icon",
-        "url": "https://cdn-game-mcp.gambo.ai/6d0af60f-7d2a-4272-b853-fe9cae0d14ee/images/turtle_victory_icon.png"
+        "key": "penguin_victory_icon",
+        "url": "https://cdn-game-mcp.gambo.ai/winter-theme/penguin_victory_icon.png"
       },
       {
         "type": "image",
-        "key": "turtle_heart_icon",
-        "url": "https://cdn-game-mcp.gambo.ai/ce88272d-0520-4ef2-8235-c7a3649d90e5/images/turtle_heart_icon.png"
+        "key": "penguin_heart_icon",
+        "url": "https://cdn-game-mcp.gambo.ai/winter-theme/penguin_heart_icon.png"
       },
       {
         "type": "image",
-        "key": "turtle_combo_badge",
-        "url": "https://cdn-game-mcp.gambo.ai/55671bae-d019-41e8-8992-c56336e375ee/images/turtle_combo_badge.png"
+        "key": "penguin_combo_badge",
+        "url": "https://cdn-game-mcp.gambo.ai/winter-theme/penguin_combo_badge.png"
       },
       {
         "type": "image",
@@ -87,8 +87,8 @@
       },
       {
         "type": "image",
-        "key": "turtle_rescue_card",
-        "url": "https://cdn-game-mcp.gambo.ai/2ff9a458-acb8-455d-a1cb-a1745e222fd5/images/turtle_rescue_card.png"
+        "key": "penguin_rescue_card",
+        "url": "https://cdn-game-mcp.gambo.ai/winter-theme/penguin_rescue_card.png"
       }
     ]
   },
@@ -96,23 +96,23 @@
     "files": [
       {
         "type": "image",
-        "key": "baby_turtle",
-        "url": "https://cdn-game-mcp.gambo.ai/83fbe571-7719-4b5f-af42-b78cc1a631bb/images/baby_turtle.png"
+        "key": "baby_penguin",
+        "url": "https://cdn-game-mcp.gambo.ai/winter-theme/baby_penguin.png"
       },
       {
         "type": "image",
-        "key": "turtle_egg",
-        "url": "https://cdn-game-mcp.gambo.ai/35de4e6c-3c9c-4d3e-b3dd-e3ec2a2c7c81/images/turtle_egg.png"
+        "key": "penguin_egg",
+        "url": "https://cdn-game-mcp.gambo.ai/winter-theme/penguin_egg.png"
       },
       {
         "type": "image",
-        "key": "cartoon_3d_turtle_egg",
-        "url": "https://cdn-game-mcp.gambo.ai/2808d850-2e8c-4fa8-a514-7af3b6737558/images/cartoon_3d_turtle_egg.png"
+        "key": "cartoon_3d_penguin_egg",
+        "url": "https://cdn-game-mcp.gambo.ai/winter-theme/cartoon_3d_penguin_egg.png"
       },
       {
         "type": "image",
-        "key": "turtle_egg_sand_nest",
-        "url": "https://cdn-game-mcp.gambo.ai/7689f957-5852-4c04-beae-71a4759db804/images/turtle_egg_sand_nest.png"
+        "key": "penguin_egg_ice_nest",
+        "url": "https://cdn-game-mcp.gambo.ai/winter-theme/penguin_egg_ice_nest.png"
       }
     ]
   },
@@ -120,63 +120,63 @@
     "files": [
       {
         "type": "image",
-        "key": "turtle_egg_cracking_1",
-        "url": "https://cdn-game-mcp.gambo.ai/b5c330c0-e0c8-4752-91da-9a4953fc4bfd/images/turtle_egg_cracking_1.png"
+        "key": "penguin_egg_cracking_1",
+        "url": "https://cdn-game-mcp.gambo.ai/winter-theme/penguin_egg_cracking_1.png"
       },
       {
         "type": "image",
-        "key": "turtle_egg_cracking_2",
-        "url": "https://cdn-game-mcp.gambo.ai/b17778c5-e66f-4cdd-b651-f20c254d2fc3/images/turtle_egg_cracking_2.png"
+        "key": "penguin_egg_cracking_2",
+        "url": "https://cdn-game-mcp.gambo.ai/winter-theme/penguin_egg_cracking_2.png"
       },
       {
         "type": "image",
-        "key": "turtle_egg_cracking_3",
-        "url": "https://cdn-game-mcp.gambo.ai/bc4e6199-dad9-4172-98a2-5a49ec760169/images/turtle_egg_cracking_3.png"
+        "key": "penguin_egg_cracking_3",
+        "url": "https://cdn-game-mcp.gambo.ai/winter-theme/penguin_egg_cracking_3.png"
       },
       {
         "type": "image",
-        "key": "turtle_egg_hatching",
-        "url": "https://cdn-game-mcp.gambo.ai/c089d4f0-4b6a-44ee-b024-bc2627d93bcf/images/turtle_egg_hatching.png"
+        "key": "penguin_egg_hatching",
+        "url": "https://cdn-game-mcp.gambo.ai/winter-theme/penguin_egg_hatching.png"
       },
       {
         "type": "image",
-        "key": "turtle_crawl_frame1",
-        "url": "https://cdn-game-mcp.gambo.ai/dfa91316-9e3e-4d01-a838-626feef1b918/images/turtle_crawl_frame1.png"
+        "key": "penguin_waddle_frame1",
+        "url": "https://cdn-game-mcp.gambo.ai/winter-theme/penguin_waddle_frame1.png"
       },
       {
         "type": "image",
-        "key": "turtle_crawl_frame2",
-        "url": "https://cdn-game-mcp.gambo.ai/c66570b5-1fcc-4dbb-8978-8a5226507f10/images/turtle_crawl_frame2.png"
+        "key": "penguin_waddle_frame2",
+        "url": "https://cdn-game-mcp.gambo.ai/winter-theme/penguin_waddle_frame2.png"
       },
       {
         "type": "image",
-        "key": "turtle_crawl_frame3",
-        "url": "https://cdn-game-mcp.gambo.ai/5ba5ba1e-22a9-478b-9550-eb1460b39884/images/turtle_crawl_frame3.png"
+        "key": "penguin_waddle_frame3",
+        "url": "https://cdn-game-mcp.gambo.ai/winter-theme/penguin_waddle_frame3.png"
       },
       {
         "type": "image",
-        "key": "baby_turtle_crawl_frame1",
-        "url": "https://cdn-game-mcp.gambo.ai/42f7cc8e-357d-433a-97df-61844a38816b/animations/baby_turtle_crawl_R/frame_1.png"
+        "key": "baby_penguin_waddle_frame1",
+        "url": "https://cdn-game-mcp.gambo.ai/winter-theme/baby_penguin_waddle_frame1.png"
       },
       {
         "type": "image",
-        "key": "baby_turtle_crawl_frame2",
-        "url": "https://cdn-game-mcp.gambo.ai/c45294b5-3379-47df-931a-ec06b8a9542d/animations/baby_turtle_crawl_R/frame_2.png"
+        "key": "baby_penguin_waddle_frame2",
+        "url": "https://cdn-game-mcp.gambo.ai/winter-theme/baby_penguin_waddle_frame2.png"
       },
       {
         "type": "image",
-        "key": "cartoon_3d_baby_turtle_swim1",
-        "url": "https://cdn-game-mcp.gambo.ai/6f2315e9-efd5-4948-91c3-9483183ad7f4/images/cartoon_3d_baby_turtle_swim1.png"
+        "key": "cartoon_3d_baby_penguin_swim1",
+        "url": "https://cdn-game-mcp.gambo.ai/winter-theme/cartoon_3d_baby_penguin_swim1.png"
       },
       {
         "type": "image",
-        "key": "cartoon_3d_baby_turtle_swim2",
-        "url": "https://cdn-game-mcp.gambo.ai/1a0fb9ce-029c-4fe0-9eec-65310b49a872/images/cartoon_3d_baby_turtle_swim2.png"
+        "key": "cartoon_3d_baby_penguin_swim2",
+        "url": "https://cdn-game-mcp.gambo.ai/winter-theme/cartoon_3d_baby_penguin_swim2.png"
       },
       {
         "type": "image",
-        "key": "cartoon_3d_baby_turtle_swim3",
-        "url": "https://cdn-game-mcp.gambo.ai/8c6286df-8dab-472e-b670-02adb11c874e/images/cartoon_3d_baby_turtle_swim3.png"
+        "key": "cartoon_3d_baby_penguin_swim3",
+        "url": "https://cdn-game-mcp.gambo.ai/winter-theme/cartoon_3d_baby_penguin_swim3.png"
       }
     ]
   },
@@ -282,13 +282,13 @@
     "files": [
       {
         "type": "audio",
-        "key": "summer_beach_vibes",
-        "url": "https://cdn-game-mcp.gambo.ai/3b6e0a8a-2760-4764-9a35-dc48fd252e1f/music/summer_beach_vibes.wav"
+        "key": "winter_wind_chill",
+        "url": "https://cdn-game-mcp.gambo.ai/winter-theme/winter_wind_chill.wav"
       },
       {
         "type": "audio",
-        "key": "beach_theme",
-        "url": "https://cdn-game-mcp.gambo.ai/41e097fa-23cf-476c-9b58-c00e033d575b/music/beach_theme.wav"
+        "key": "soft_winter_bells",
+        "url": "https://cdn-game-mcp.gambo.ai/winter-theme/soft_winter_bells.wav"
       }
     ]
   },

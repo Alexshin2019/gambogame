@@ -1,5 +1,5 @@
 import Phaser from "phaser"
-import { gameConfig, turtleConfig, audioConfig, screenSize } from '../gameConfig.json'
+import { gameConfig, penguinConfig, audioConfig, screenSize } from '../gameConfig.json'
 
 export default class BaseLevelScene extends Phaser.Scene {
   constructor(config) {
@@ -20,7 +20,7 @@ export default class BaseLevelScene extends Phaser.Scene {
       timeLimit: 180,        // 시간 제한 (초)
       trashTypes: 8,         // 쓰레기 종류 수
       minMatchCount: 3,      // 최소 일치 수
-      turtleCount: 6,        // 거북이 수
+      penguinCount: 6,        // 펭귄 수
       background: 'light_beach_background',
       levelName: 'Base Level',
       difficulty: 'Easy'
@@ -41,17 +41,17 @@ export default class BaseLevelScene extends Phaser.Scene {
     this.grid = []
     this.gridSprites = []
     
-    // 거북이 관련
-    this.turtlePosition = turtleConfig.initialPosition.value
-    this.turtleTarget = turtleConfig.targetPosition.value
+    // 펭귄 관련
+    this.penguinPosition = penguinConfig.initialPosition.value
+    this.penguinTarget = penguinConfig.targetPosition.value
     this.consecutiveMatches = 0
     this.isComboActive = false
-    this.turtleStates = []
-    this.savedTurtlesCount = 0
+    this.penguinStates = []
+    this.savedPenguinsCount = 0
     this.totalMatches = 0
-    this.turtleEggs = []
-    this.babyTurtles = []
-    this.sandNests = []
+    this.penguinEggs = []
+    this.babyPenguins = []
+    this.iceNests = []
     
     // 콤보 시스템
     this.comboTimeWindow = 3000
@@ -61,7 +61,7 @@ export default class BaseLevelScene extends Phaser.Scene {
     this.lastComboTime = 0
     this.isInChainReaction = false
     this.chainStartTime = 0
-    this.turtleSeaProgress = []
+    this.penguinSeaProgress = []
     
     // 타이머 정리
     if (this.gameTimer) {
@@ -104,8 +104,8 @@ export default class BaseLevelScene extends Phaser.Scene {
     // UI 생성
     this.createUI()
     
-    // 거북이 생성
-    this.createTurtle()
+    // 펭귄 생성
+    this.createPenguin()
     
     // 입력 설정
     this.setupInput()
@@ -116,9 +116,9 @@ export default class BaseLevelScene extends Phaser.Scene {
     // 콤보 상태 확인 타이머 시작
     this.startComboTimer()
     
-    // 배경 음악과 파도 소리 재생
+    // 배경 음악과 겨울 벨 소리 재생
     this.backgroundMusic.play()
-    this.oceanWavesAmbient.play()
+    this.winterBellsAmbient.play()
   }
 
   setupLoadingProgress() {
@@ -148,32 +148,32 @@ export default class BaseLevelScene extends Phaser.Scene {
     })
   }
 
-  // 复用原GameScene的所有核心方法
+  // 겨울 빙하 배경 생성
   createBackground() {
-    this.beachBackground = this.add.image(screenSize.width.value / 2, screenSize.height.value / 2, this.levelConfig.background)
+    this.iceBackground = this.add.image(screenSize.width.value / 2, screenSize.height.value / 2, this.levelConfig.background)
     
-    const beachScaleX = screenSize.width.value / this.beachBackground.width
-    const beachScaleY = screenSize.height.value / this.beachBackground.height
-    const beachScale = Math.max(beachScaleX, beachScaleY)
-    this.beachBackground.setScale(beachScale)
+    const iceScaleX = screenSize.width.value / this.iceBackground.width
+    const iceScaleY = screenSize.height.value / this.iceBackground.height
+    const iceScale = Math.max(iceScaleX, iceScaleY)
+    this.iceBackground.setScale(iceScale)
     
-    this.oceanLayer = this.add.image(screenSize.width.value / 2 - 5, -25, 'bright_ocean_with_waves')
-    this.oceanLayer.setOrigin(0.5, 0)
+    this.auroraLayer = this.add.image(screenSize.width.value / 2 - 5, -25, 'frozen_ocean_with_ice')
+    this.auroraLayer.setOrigin(0.5, 0)
     
-    const oceanScaleX = screenSize.width.value / this.oceanLayer.width
-    const targetOceanHeight = screenSize.height.value / 5
-    const oceanScaleY = targetOceanHeight / this.oceanLayer.height
-    const oceanScale = Math.max(oceanScaleX, oceanScaleY)
-    this.oceanLayer.setScale(oceanScale)
+    const auroraScaleX = screenSize.width.value / this.auroraLayer.width
+    const targetAuroraHeight = screenSize.height.value / 5
+    const auroraScaleY = targetAuroraHeight / this.auroraLayer.height
+    const auroraScale = Math.max(auroraScaleX, auroraScaleY)
+    this.auroraLayer.setScale(auroraScale)
     
-    this.oceanInitialY = this.oceanLayer.y
-    this.createTidalAnimation()
+    this.auroraInitialY = this.auroraLayer.y
+    this.createAuroraAnimation()
   }
 
-  createTidalAnimation() {
+  createAuroraAnimation() {
     this.tweens.add({
-      targets: this.oceanLayer,
-      y: this.oceanInitialY - 8,
+      targets: this.auroraLayer,
+      y: this.auroraInitialY - 8,
       duration: 6000,
       ease: 'Sine.easeInOut',
       yoyo: true,
@@ -181,8 +181,8 @@ export default class BaseLevelScene extends Phaser.Scene {
     })
     
     this.tweens.add({
-      targets: this.oceanLayer,
-      x: this.oceanLayer.x + 4,
+      targets: this.auroraLayer,
+      x: this.auroraLayer.x + 4,
       duration: 4500,
       ease: 'Sine.easeInOut',
       yoyo: true,
@@ -191,7 +191,7 @@ export default class BaseLevelScene extends Phaser.Scene {
     })
     
     this.tweens.add({
-      targets: this.oceanLayer,
+      targets: this.auroraLayer,
       alpha: 0.92,
       duration: 8000,
       ease: 'Sine.easeInOut',
@@ -201,8 +201,8 @@ export default class BaseLevelScene extends Phaser.Scene {
     })
     
     this.tweens.add({
-      targets: this.oceanLayer,
-      scaleY: this.oceanLayer.scaleY * 1.05,
+      targets: this.auroraLayer,
+      scaleY: this.auroraLayer.scaleY * 1.05,
       duration: 7000,
       ease: 'Sine.easeInOut',
       yoyo: true,
@@ -214,29 +214,29 @@ export default class BaseLevelScene extends Phaser.Scene {
   initAudio() {
     this.matchSound = this.sound.add('crisp_match_sound', { volume: audioConfig.soundVolume.value })
     this.swapSound = this.sound.add('swap_sound', { volume: audioConfig.soundVolume.value })
-    this.turtleMoveSound = this.sound.add('turtle_move_sound', { volume: audioConfig.soundVolume.value })
-    this.sandShuffleSound = this.sound.add('sand_shuffle_sound', { volume: audioConfig.soundVolume.value * 1.8 })
+    this.penguinMoveSound = this.sound.add('penguin_move_sound', { volume: audioConfig.soundVolume.value })
+    this.iceShuffleSound = this.sound.add('ice_shuffle_sound', { volume: audioConfig.soundVolume.value * 1.8 })
     this.victorySound = this.sound.add('victory_sound', { volume: audioConfig.soundVolume.value })
     this.gameOverSound = this.sound.add('game_over_sound', { volume: audioConfig.soundVolume.value })
     this.uiClickSound = this.sound.add('ui_click_sound', { volume: audioConfig.soundVolume.value })
     this.comboTriggerSound = this.sound.add('optimized_combo_sound', { volume: audioConfig.soundVolume.value * 1.2 })
-    this.backgroundMusic = this.sound.add('summer_beach_vibes', { 
+    this.backgroundMusic = this.sound.add('winter_wind_chill', { 
       volume: audioConfig.musicVolume.value * 0.4,
       loop: true 
     })
-    this.oceanWavesAmbient = this.sound.add('ocean_waves_ambient', { 
+    this.winterBellsAmbient = this.sound.add('soft_winter_bells', { 
       volume: audioConfig.musicVolume.value * 0.2,
       loop: true 
     })
   }
 
   createAnimations() {
-    if (!this.anims.exists('turtle_crawl')) {
+    if (!this.anims.exists('penguin_waddle')) {
       this.anims.create({
-        key: 'turtle_crawl',
+        key: 'penguin_waddle',
         frames: [
-          { key: 'baby_turtle_crawl_frame1', duration: 400 },
-          { key: 'baby_turtle_crawl_frame2', duration: 400 }
+          { key: 'baby_penguin_waddle_frame1', duration: 400 },
+          { key: 'baby_penguin_waddle_frame2', duration: 400 }
         ],
         repeat: -1
       })
@@ -267,7 +267,7 @@ export default class BaseLevelScene extends Phaser.Scene {
     }).setOrigin(0.5)
 
     this.add.text(screenSize.width.value / 2, screenSize.height.value / 2 - 20, 
-      'All baby turtles have reached the sea safely!', {
+      'All baby penguins have reached the frozen sea safely!', {
       fontFamily: 'Arial, sans-serif',
       fontSize: '24px',
       fill: '#ffffff',
