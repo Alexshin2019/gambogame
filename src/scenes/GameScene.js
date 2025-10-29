@@ -1,15 +1,15 @@
 import Phaser from "phaser"
-import { gameConfig, turtleConfig, audioConfig, screenSize } from '../gameConfig.json'
+import config from '../gameConfig.json'
 
 export default class GameScene extends Phaser.Scene {
   constructor(config = { key: 'GameScene' }) {
     super(config)
     
     // 게임 영역 위치 (고정값)
-    this.gridRows = gameConfig.gridRows.value
-    this.gridCols = gameConfig.gridCols.value
-    this.cellSize = gameConfig.cellSize.value
-    this.gameAreaX = (screenSize.width.value - this.gridCols * this.cellSize) / 2
+    this.gridRows = config.gameConfig.gridRows.value
+    this.gridCols = config.gameConfig.gridCols.value
+    this.cellSize = config.gameConfig.cellSize.value
+    this.gameAreaX = (config.screenSize.width.value - this.gridCols * this.cellSize) / 2
     this.gameAreaY = 200 // 위쪽에 UI 공간을 더 남겨둠
     this.trashTypes = ['front_view_trash_tile_plastic_bottle', 'front_view_trash_tile_plastic_bag', 'front_view_trash_tile_soda_can', 'front_view_trash_tile_food_wrapper', 'front_view_trash_tile_cigarette_butt', 'front_view_trash_tile_paper_cup', 'front_view_trash_tile_glass_bottle', 'front_view_trash_tile_aluminum_foil']
   }
@@ -17,7 +17,7 @@ export default class GameScene extends Phaser.Scene {
   init() {
     // 모든 게임 상태 변수 재설정
     this.gameState = 'playing' // 'playing', 'victory', 'gameover'
-    this.timeLeft = gameConfig.gameTime.value
+    this.timeLeft = config.gameConfig.gameTime.value
     this.selectedTile = null
     this.isDragging = false
     
@@ -26,8 +26,8 @@ export default class GameScene extends Phaser.Scene {
     this.gridSprites = []
     
     // 거북이 관련
-    this.turtlePosition = turtleConfig.initialPosition.value
-    this.turtleTarget = turtleConfig.targetPosition.value
+    this.turtlePosition = config.turtleConfig.initialPosition.value
+    this.turtleTarget = config.turtleConfig.targetPosition.value
     this.consecutiveMatches = 0 // 연속 제거 카운트
     this.isComboActive = false // combo 상태
     this.turtleStates = [] // 각 거북이의 상태: 'egg', 'hatching', 'moving_to_side', 'ready_for_sea', 'moving_to_sea', 'saved'
@@ -97,23 +97,23 @@ export default class GameScene extends Phaser.Scene {
   
   createBackground() {
     // 첫 번째: 고정된 연두색 해변 배경 생성 (움직이지 않음)
-    this.beachBackground = this.add.image(screenSize.width.value / 2, screenSize.height.value / 2, 'light_beach_background')
+    this.beachBackground = this.add.image(config.screenSize.width.value / 2, config.screenSize.height.value / 2, 'light_beach_background')
     
     // 해변 배경 확대 비율로 화면에 맞춤
-    const beachScaleX = screenSize.width.value / this.beachBackground.width
-    const beachScaleY = screenSize.height.value / this.beachBackground.height
+    const beachScaleX = config.screenSize.width.value / this.beachBackground.width
+    const beachScaleY = config.screenSize.height.value / this.beachBackground.height
     const beachScale = Math.max(beachScaleX, beachScaleY)
     this.beachBackground.setScale(beachScale)
     
     // 두 번째: 화면 위쪽 1/5 영역에서 움직이는 밝은 바다 레이어 생성 (흰색 파도 포함)
     // 바다 레이어는 화면 위쪽에 배치되고, 왼쪽으로 조금 이동하여 왼쪽 틈새 방지
-    this.oceanLayer = this.add.image(screenSize.width.value / 2 - 5, -25, 'bright_ocean_with_waves')
+    this.oceanLayer = this.add.image(config.screenSize.width.value / 2 - 5, -25, 'bright_ocean_with_waves')
     this.oceanLayer.setOrigin(0.5, 0) // 위쪽에서 정렬
     
     // 바다 레이어 확대 비율로 화면에 맞춤
-    const oceanScaleX = screenSize.width.value / this.oceanLayer.width
+    const oceanScaleX = config.screenSize.width.value / this.oceanLayer.width
     // 높이는 화면 높이의 1/5로 축소
-    const targetOceanHeight = screenSize.height.value / 5 // 화면 높이의 1/5
+    const targetOceanHeight = config.screenSize.height.value / 5 // 화면 높이의 1/5
     const oceanScaleY = targetOceanHeight / this.oceanLayer.height
     const oceanScale = Math.max(oceanScaleX, oceanScaleY)
     this.oceanLayer.setScale(oceanScale)
@@ -173,20 +173,20 @@ export default class GameScene extends Phaser.Scene {
   
   initAudio() {
     // 초기 효과 설정
-    this.matchSound = this.sound.add('crisp_match_sound', { volume: audioConfig.soundVolume.value })
-    this.swapSound = this.sound.add('swap_sound', { volume: audioConfig.soundVolume.value })
-    this.turtleMoveSound = this.sound.add('turtle_move_sound', { volume: audioConfig.soundVolume.value })
-    this.sandShuffleSound = this.sound.add('sand_shuffle_sound', { volume: audioConfig.soundVolume.value * 1.8 })
-    this.victorySound = this.sound.add('victory_sound', { volume: audioConfig.soundVolume.value })
-    this.gameOverSound = this.sound.add('game_over_sound', { volume: audioConfig.soundVolume.value })
-    this.uiClickSound = this.sound.add('ui_click_sound', { volume: audioConfig.soundVolume.value })
-    this.comboTriggerSound = this.sound.add('optimized_combo_sound', { volume: audioConfig.soundVolume.value * 1.2 })
+    this.matchSound = this.sound.add('crisp_match_sound', { volume: config.audioConfig.soundVolume.value })
+    this.swapSound = this.sound.add('swap_sound', { volume: config.audioConfig.soundVolume.value })
+    this.turtleMoveSound = this.sound.add('turtle_move_sound', { volume: config.audioConfig.soundVolume.value })
+    this.sandShuffleSound = this.sound.add('sand_shuffle_sound', { volume: config.audioConfig.soundVolume.value * 1.8 })
+    this.victorySound = this.sound.add('victory_sound', { volume: config.audioConfig.soundVolume.value })
+    this.gameOverSound = this.sound.add('game_over_sound', { volume: config.audioConfig.soundVolume.value })
+    this.uiClickSound = this.sound.add('ui_click_sound', { volume: config.audioConfig.soundVolume.value })
+    this.comboTriggerSound = this.sound.add('optimized_combo_sound', { volume: config.audioConfig.soundVolume.value * 1.2 })
     this.backgroundMusic = this.sound.add('summer_beach_vibes', { 
-      volume: audioConfig.musicVolume.value * 0.4,
+      volume: config.audioConfig.musicVolume.value * 0.4,
       loop: true 
     })
     this.oceanWavesAmbient = this.sound.add('ocean_waves_ambient', { 
-      volume: audioConfig.musicVolume.value * 0.2,
+      volume: config.audioConfig.musicVolume.value * 0.2,
       loop: true 
     })
   }
@@ -349,7 +349,7 @@ export default class GameScene extends Phaser.Scene {
 
   createProgressDisplay() {
     // 진행 표시 컨테이너 - 오른쪽 가장자리에 붙이지 않고 위치 조정
-    const progressContainer = this.add.container(screenSize.width.value - 200, 50)
+    const progressContainer = this.add.container(config.screenSize.width.value - 200, 50)
     
     // 진행 패널 배경 - 그림자 효과 추가
     const progressShadow = this.add.graphics()
@@ -405,7 +405,7 @@ export default class GameScene extends Phaser.Scene {
 
   createGameInfoPanel() {
     // 중앙 정보 패널 - 위쪽 가장자리에 붙이지 않고 위치 조정
-    const infoContainer = this.add.container(screenSize.width.value / 2, 50)
+    const infoContainer = this.add.container(config.screenSize.width.value / 2, 50)
     
     // 정보 패널 배경 - 그림자 효과 추가
     const infoShadow = this.add.graphics()
@@ -1304,7 +1304,7 @@ export default class GameScene extends Phaser.Scene {
       targetX = 50 + index * 60 // 왼쪽 가장자리 100픽셀 시작, 각각 60픽셀 간격
     } else {
       // 오른쪽 거북이: index 3,4,5는 화면 오른쪽 아래 각각 위치
-      targetX = screenSize.width.value - 50 - (index - 3) * 60 // 오른쪽 가장자리 100픽셀 시작, 오른쪽에서 왼쪽으로 배열
+      targetX = config.screenSize.width.value - 50 - (index - 3) * 60 // 오른쪽 가장자리 100픽셀 시작, 오른쪽에서 왼쪽으로 배열
     }
     
     turtle.setData('targetX', targetX)
@@ -1330,7 +1330,7 @@ export default class GameScene extends Phaser.Scene {
   
   showComboText() {
     // COMBO 텍스트 컨테이너 - 크기를 반으로 줄이고 위쪽 영역으로 이동
-    const comboContainer = this.add.container(screenSize.width.value / 2, screenSize.height.value / 2 - 280)
+    const comboContainer = this.add.container(config.screenSize.width.value / 2, config.screenSize.height.value / 2 - 280)
     comboContainer.setDepth(25)
     comboContainer.setScale(0.5) // 전체를 반으로 축소
     
@@ -1730,13 +1730,13 @@ export default class GameScene extends Phaser.Scene {
     }
     
     // 승리 인터페이스 컨테이너 생성
-    const victoryContainer = this.add.container(screenSize.width.value / 2, screenSize.height.value / 2)
+    const victoryContainer = this.add.container(config.screenSize.width.value / 2, config.screenSize.height.value / 2)
     victoryContainer.setDepth(30)
     
     // 배경 가림
     const overlay = this.add.graphics()
     overlay.fillStyle(0x000000, 0.7)
-    overlay.fillRect(-screenSize.width.value/2, -screenSize.height.value/2, screenSize.width.value, screenSize.height.value)
+    overlay.fillRect(-config.screenSize.width.value/2, -config.screenSize.height.value/2, config.screenSize.width.value, config.screenSize.height.value)
     
     // 거북이 승리 아이콘
     const turtleVictoryIcon = this.add.image(0, -120, 'turtle_victory_icon')
@@ -1946,8 +1946,8 @@ export default class GameScene extends Phaser.Scene {
       particle.fillStyle(Phaser.Utils.Array.GetRandom([0xffd700, 0xffff00, 0x00ff00, 0x00ccff]), 1)
       particle.fillCircle(0, 0, Phaser.Math.Between(3, 8))
       
-      const startX = Phaser.Math.Between(100, screenSize.width.value - 100)
-      const startY = Phaser.Math.Between(100, screenSize.height.value - 100)
+      const startX = Phaser.Math.Between(100, config.screenSize.width.value - 100)
+      const startY = Phaser.Math.Between(100, config.screenSize.height.value - 100)
       particle.setPosition(startX, startY)
       particle.setDepth(25)
       
@@ -2002,7 +2002,7 @@ export default class GameScene extends Phaser.Scene {
   }
   
   createTimeUpText() {
-    const timeUpContainer = this.add.container(screenSize.width.value / 2, screenSize.height.value / 2 - 100)
+    const timeUpContainer = this.add.container(config.screenSize.width.value / 2, config.screenSize.height.value / 2 - 100)
     timeUpContainer.setDepth(40)
     
     // TIME UP 글씨의 3D 입체감 효과 (폭발 원 배경 제거)
@@ -2109,13 +2109,13 @@ export default class GameScene extends Phaser.Scene {
   
   showGameOverInterface(isAllSaved, saveRate, savedCount, totalTurtles) {
     // 게임 종료 인터페이스 컨테이너 생성
-    const gameOverContainer = this.add.container(screenSize.width.value / 2, screenSize.height.value / 2 + 50)
+    const gameOverContainer = this.add.container(config.screenSize.width.value / 2, config.screenSize.height.value / 2 + 50)
     gameOverContainer.setDepth(30)
     
     // 전체 화면 짙은 투명 커버 추가
     const overlay = this.add.graphics()
     overlay.fillStyle(0x333333, 0.7)  // 짙은 투명색
-    overlay.fillRect(0, 0, screenSize.width.value, screenSize.height.value)  // 전체 화면 커버
+    overlay.fillRect(0, 0, config.screenSize.width.value, config.screenSize.height.value)  // 전체 화면 커버
     overlay.setDepth(29)  // 다른 요소 아래에 배치
     
     // 거북이 아이콘 - 더 크고 눈에 띄는 것

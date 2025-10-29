@@ -19,12 +19,12 @@
       {
         "type": "image",
         "key": "winter_ice_rescue_title_background",
-        "url": "https://cdn-game-mcp.gambo.ai/winter-theme/penguin_rescue_title_background.png"
+        "url": "https://cdn-game-mcp.gambo.ai/41e326f3-6a16-4f2d-a01d-5766769a4f9a/images/beach_turtle_rescue_title_background_no_text.png"
       },
       {
         "type": "image",
         "key": "snowy_ice_background",
-        "url": "https://cdn-game-mcp.gambo.ai/winter-theme/snowy_ice_background.png"
+        "url": "https://cdn-game-mcp.gambo.ai/02e69ba6-b39c-4cba-995f-083ee419f782/images/cartoon_beach_background.png"
       },
       {
         "type": "image",
@@ -58,7 +58,7 @@
       {
         "type": "image",
         "key": "loading_penguin_icon",
-        "url": "https://cdn-game-mcp.gambo.ai/winter-theme/loading_penguin_icon.png"
+        "url": "https://cdn-game-mcp.gambo.ai/edfceaf7-96d4-48f9-bf2b-204ca09edfe2/images/loading_turtle_icon.png"
       },
       {
         "type": "image",

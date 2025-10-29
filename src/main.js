@@ -8,12 +8,12 @@ import Level2Scene from "./scenes/Level2Scene"
 import Level3Scene from "./scenes/Level3Scene"
 import Level4Scene from "./scenes/Level4Scene"
 import Level5Scene from "./scenes/Level5Scene"
-import { screenSize, debugConfig, renderConfig } from "./gameConfig.json"
+import appConfig from "./gameConfig.json"
 
 const config = {
   type: Phaser.AUTO,
-  width: screenSize.width.value,
-  height: screenSize.height.value,
+  width: appConfig.screenSize.width.value,
+  height: appConfig.screenSize.height.value,
   scale: {
     mode: Phaser.Scale.FIT,
     autoCenter: Phaser.Scale.CENTER_BOTH,
@@ -22,13 +22,13 @@ const config = {
     default: "arcade",
     arcade: {
       fps: 120,
-      debug: debugConfig.debug.value,
-      debugShowBody: debugConfig.debugShowBody.value,
-      debugShowStaticBody: debugConfig.debugShowStaticBody.value,
-      debugShowVelocity: debugConfig.debugShowVelocity.value,
+      debug: appConfig.debugConfig.debug.value,
+      debugShowBody: appConfig.debugConfig.debugShowBody.value,
+      debugShowStaticBody: appConfig.debugConfig.debugShowStaticBody.value,
+      debugShowVelocity: appConfig.debugConfig.debugShowVelocity.value,
     },
   },
-  pixelArt: renderConfig.pixelArt.value,
+  pixelArt: appConfig.renderConfig.pixelArt.value,
   scene: [
     LoadingScene,       // 로딩 화면 (시작 장면)
     MainMenuScene,      // 메인 메뉴
