@@ -274,7 +274,7 @@ export default class LoadingScene extends Phaser.Scene {
 
   loadAllGameAssets(loader) {
     // Load asset pack by type
-    this.load.pack('assetPack', 'assets/asset-pack.json')
+    this.load.pack('assetPack', '/assets/asset-pack.json')
   }
 
   updateProgress(progress) {
