@@ -7,7 +7,7 @@ export default class LevelSelectScene extends Phaser.Scene {
   }
 
   preload() {
-    // 加载关卡选择需要的基本素材
+    // 레벨 선택에 필요한 기본 자료 로드
     this.load.image('game_title', 'https://cdn-game-mcp.gambo.ai/25bdbb7e-45fb-4a10-b4bb-67a02130a8c1/images/beach_turtle_rescue_clean_title.png')
     this.load.image('light_beach_background', 'https://cdn-game-mcp.gambo.ai/bf5765c0-5f4f-4a10-87e6-36110dc164d6/images/light_beach_background.png')
     this.load.image('bright_ocean_with_waves', 'https://cdn-game-mcp.gambo.ai/83f1cc87-b76a-4e49-9b13-44668b076d68/images/bright_ocean_with_waves.png')
@@ -16,28 +16,28 @@ export default class LevelSelectScene extends Phaser.Scene {
   }
 
   create() {
-    // 创建背景
+    // 배경 생성
     this.createBackground()
     
-    // 初始化音频
+    // 오디오 초기화
     this.initAudio()
     
-    // 创建UI
+    // UI 생성
     this.createUI()
     
-    // 播放背景音乐
+    // 배경 음악 재생
     this.backgroundMusic.play()
   }
 
   createBackground() {
-    // 沙滩背景
+    // 해변 배경
     this.beachBackground = this.add.image(screenSize.width.value / 2, screenSize.height.value / 2, 'light_beach_background')
     const beachScaleX = screenSize.width.value / this.beachBackground.width
     const beachScaleY = screenSize.height.value / this.beachBackground.height
     const beachScale = Math.max(beachScaleX, beachScaleY)
     this.beachBackground.setScale(beachScale)
     
-    // 海面图层
+    // 바다 레이어
     this.oceanLayer = this.add.image(screenSize.width.value / 2 - 5, -25, 'bright_ocean_with_waves')
     this.oceanLayer.setOrigin(0.5, 0)
     const oceanScaleX = screenSize.width.value / this.oceanLayer.width
@@ -46,7 +46,7 @@ export default class LevelSelectScene extends Phaser.Scene {
     const oceanScale = Math.max(oceanScaleX, oceanScaleY)
     this.oceanLayer.setScale(oceanScale)
     
-    // 潮汐动画
+    // 조수 애니메이션
     this.tweens.add({
       targets: this.oceanLayer,
       y: this.oceanLayer.y - 8,
@@ -59,14 +59,14 @@ export default class LevelSelectScene extends Phaser.Scene {
 
   initAudio() {
     this.uiClickSound = this.sound.add('ui_click_sound', { volume: audioConfig.soundVolume.value })
-    this.backgroundMusic = this.sound.add('summer_beach_vibes', { 
+    this.backgroundMusic = this.sound.add('summer_beach_vibes', {
       volume: audioConfig.musicVolume.value * 0.3,
-      loop: true 
+      loop: true
     })
   }
 
   createUI() {
-    // 标题
+    // 제목
     this.add.text(screenSize.width.value / 2, 80, 'Select Level', {
       fontFamily: 'Arial, sans-serif',
       fontSize: '48px',
@@ -77,10 +77,10 @@ export default class LevelSelectScene extends Phaser.Scene {
       align: 'center'
     }).setOrigin(0.5)
 
-    // 关卡按钮
+    // 레벨 버튼
     this.createLevelButtons()
 
-    // 返回按钮
+    // 뒤로 가기 버튼
     const backButton = this.add.text(100, screenSize.height.value - 50, '← Back to Menu', {
       fontFamily: 'Arial, sans-serif',
       fontSize: '24px',
@@ -157,12 +157,12 @@ export default class LevelSelectScene extends Phaser.Scene {
       const x = startX
       const y = startY + index * spacing
 
-      // 创建按钮背景
+      // 버튼 배경 생성
       const buttonBg = this.add.rectangle(x, y, buttonWidth, buttonHeight, 0x000000, 0.6)
       buttonBg.setStrokeStyle(3, level.color)
       buttonBg.setInteractive()
 
-      // 关卡编号
+      // 레벨 번호
       const levelNumber = this.add.text(x - 160, y, level.number.toString(), {
         fontFamily: 'Arial, sans-serif',
         fontSize: '36px',
@@ -172,7 +172,7 @@ export default class LevelSelectScene extends Phaser.Scene {
         strokeThickness: 2
       }).setOrigin(0.5)
 
-      // 关卡名称
+      // 레벨 이름
       const levelName = this.add.text(x - 50, y - 15, level.name, {
         fontFamily: 'Arial, sans-serif',
         fontSize: '24px',
@@ -182,7 +182,7 @@ export default class LevelSelectScene extends Phaser.Scene {
         strokeThickness: 1
       }).setOrigin(0.5)
 
-      // 难度和时间
+      // 난이도 및 시간
       const difficultyText = this.add.text(x - 50, y + 8, `${level.difficulty} • ${level.time}`, {
         fontFamily: 'Arial, sans-serif',
         fontSize: '16px',
@@ -191,7 +191,7 @@ export default class LevelSelectScene extends Phaser.Scene {
         strokeThickness: 1
       }).setOrigin(0.5)
 
-      // 描述
+      // 설명
       const descriptionText = this.add.text(x - 50, y + 25, level.description, {
         fontFamily: 'Arial, sans-serif',
         fontSize: '14px',
@@ -200,7 +200,7 @@ export default class LevelSelectScene extends Phaser.Scene {
         strokeThickness: 1
       }).setOrigin(0.5)
 
-      // Play按钮
+      // 플레이 버튼
       const playButton = this.add.text(x + 120, y, 'PLAY', {
         fontFamily: 'Arial, sans-serif',
         fontSize: '20px',
@@ -210,7 +210,7 @@ export default class LevelSelectScene extends Phaser.Scene {
         strokeThickness: 2
       }).setOrigin(0.5).setInteractive()
 
-      // 悬停效果 - 避免数组引用问题
+      // 호버 효과 - 배열 참조 문제 방지
       buttonBg.on('pointerover', () => {
         buttonBg.setScale(1.05)
         levelNumber.setScale(1.05)
@@ -239,7 +239,7 @@ export default class LevelSelectScene extends Phaser.Scene {
         playButton.setScale(1.0)
       })
 
-      // 点击事件
+      // 클릭 이벤트
       const clickHandler = () => {
         this.uiClickSound.play()
         this.scene.start(level.scene)

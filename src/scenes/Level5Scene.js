@@ -5,20 +5,20 @@ export default class Level5Scene extends GameScene {
   constructor() {
     super({ key: 'Level5Scene' })
     
-    // 关卡5配置：大师难度
+    // 레벨 5 설정: 마스터 난이도
     this.levelConfig = {
-      timeLimit: 60,         // 1分钟！极限挑战
-      trashTypes: 8,         // 全部8种垃圾（最终挑战）
+      timeLimit: 60,         // 1분! 극한 도전
+      trashTypes: 8,         // 모든 8가지 쓰레기 유형 (최종 도전)
       levelName: 'Coral Reef',
       difficulty: 'Master',
-      nextLevel: null        // 最后一关
+      nextLevel: null        // 마지막 레벨
     }
   }
 
   init() {
     super.init()
     this.timeLeft = this.levelConfig.timeLimit
-    // 使用全部8种垃圾类型（最高难度）
+    // 모든 8가지 쓰레기 유형 사용 (최고 난이도)
     this.trashTypes = this.trashTypes.slice(0, this.levelConfig.trashTypes)
   }
 
@@ -27,7 +27,7 @@ export default class Level5Scene extends GameScene {
     
 
 
-    // 添加最终挑战提示
+    // 최종 도전 힌트 추가
     this.add.text(screenSize.width.value / 2, 120, 
       '🏆 FINAL CHALLENGE 🏆', {
       fontFamily: 'Arial, sans-serif',
@@ -61,7 +61,7 @@ export default class Level5Scene extends GameScene {
       screenSize.width.value, screenSize.height.value, 0x000000, 0.8)
     victoryBg.setDepth(100)
     
-    // 游戏完全通关界面
+    // 게임 전체 클리어 화면
     const gameCompleteText = this.add.text(screenSize.width.value / 2, screenSize.height.value / 2 - 140, 
       '🎉 GAME COMPLETE! 🎉', {
       fontFamily: 'Arial, sans-serif',
@@ -97,7 +97,7 @@ export default class Level5Scene extends GameScene {
     }).setOrigin(0.5)
     heroText.setDepth(102)
 
-    // 添加成就文字
+    // 업적 텍스트 추가
     const achievementText = this.add.text(screenSize.width.value / 2, screenSize.height.value / 2 + 20, 
       '⭐ Master Beach Cleaner Achievement Unlocked! ⭐', {
       fontFamily: 'Arial, sans-serif',
@@ -115,7 +115,7 @@ export default class Level5Scene extends GameScene {
   createFinalVictoryButtons() {
     const buttonY = screenSize.height.value / 2 + 80
     
-    // 返回关卡选择按钮
+    // 레벨 선택 버튼으로 돌아가기
     const selectButton = this.add.text(screenSize.width.value / 2 - 100, buttonY, 
       'Level Select', {
       fontFamily: 'Arial, sans-serif',
@@ -126,7 +126,7 @@ export default class Level5Scene extends GameScene {
     }).setOrigin(0.5).setInteractive()
     selectButton.setDepth(103)
 
-    // 重玩最终关卡按钮
+    // 최종 레벨 다시 플레이 버튼
     const retryButton = this.add.text(screenSize.width.value / 2 + 100, buttonY, 
       'Play Again', {
       fontFamily: 'Arial, sans-serif',
@@ -137,7 +137,7 @@ export default class Level5Scene extends GameScene {
     }).setOrigin(0.5).setInteractive()
     retryButton.setDepth(103)
 
-    // 主菜单按钮
+    // 메인 메뉴 버튼
     const menuButton = this.add.text(screenSize.width.value / 2, buttonY + 60, 
       'Main Menu', {
       fontFamily: 'Arial, sans-serif',
@@ -148,7 +148,7 @@ export default class Level5Scene extends GameScene {
     }).setOrigin(0.5).setInteractive()
     menuButton.setDepth(103)
 
-    // 设置悬停效果 - 分别设置以避免数组引用问题
+    // 호버 효과 설정 - 배열 참조 문제 방지를 위해 개별적으로 설정
     selectButton.on('pointerover', () => selectButton.setScale(1.1))
     selectButton.on('pointerout', () => selectButton.setScale(1.0))
     

@@ -5,10 +5,10 @@ export default class Level3Scene extends GameScene {
   constructor() {
     super({ key: 'Level3Scene' })
     
-    // 关卡3配置：困难难度
+    // 레벨 3 설정: 어려움 난이도
     this.levelConfig = {
-      timeLimit: 120,        // 2分钟
-      trashTypes: 7,         // 使用7种垃圾，增加难度
+      timeLimit: 120,        // 2분
+      trashTypes: 7,         // 7가지 쓰레기 사용, 난이도 증가
       levelName: 'Rocky Shore',
       difficulty: 'Hard',
       nextLevel: 'Level4Scene'
@@ -18,14 +18,14 @@ export default class Level3Scene extends GameScene {
   init() {
     super.init()
     this.timeLeft = this.levelConfig.timeLimit
-    // 使用全部垃圾类型
-    // 使用7种垃圾类型（前6种+玻璃瓶）
+    // 모든 쓰레기 유형 사용
+    // 7가지 쓰레기 유형 사용 (이전 6가지 + 유리병)
     this.trashTypes = this.trashTypes.slice(0, this.levelConfig.trashTypes)
   }
 
   createUI() {
     super.createUI()
-    // 关卡信息文字已删除，保持UI清爽
+    // 레벨 정보 텍스트 삭제됨, UI 깔끔하게 유지
   }
 
   victory() {
@@ -98,7 +98,7 @@ export default class Level3Scene extends GameScene {
     }).setOrigin(0.5).setInteractive()
     retryButton.setDepth(103)
 
-    // 设置悬停效果 - 分别设置以避免数组引用问题
+    // 호버 효과 설정 - 배열 참조 문제 방지를 위해 개별적으로 설정
     nextButton.on('pointerover', () => nextButton.setScale(1.1))
     nextButton.on('pointerout', () => nextButton.setScale(1.0))
     

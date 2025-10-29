@@ -6,59 +6,59 @@ export default class LoadingScene extends Phaser.Scene {
     super({ key: 'LoadingScene' })
     this.loadingProgress = 0
     this.turtleIcons = []
-    this.blackScreenDuration = loadingConfig.blackScreenDuration.value // 黑屏等待时间（毫秒）
-    this.enableBlackScreen = loadingConfig.enableBlackScreen.value // 是否启用黑屏等待阶段
+    this.blackScreenDuration = loadingConfig.blackScreenDuration.value // 검은 화면 대기 시간 (밀리초)
+    this.enableBlackScreen = loadingConfig.enableBlackScreen.value // 검은 화면 대기 단계 활성화 여부
   }
 
   preload() {
-    // 在 preload 阶段首先加载加载界面所需的基本素材
+    // preload 단계에서 로딩 화면에 필요한 기본 자료를 먼저 로드합니다.
     this.load.image('loading_screen_background', 'https://cdn-game-mcp.gambo.ai/68695e6c-a5b6-4e9d-a9dc-a6cf1fe21719/images/loading_screen_background.png')
     this.load.image('loading_turtle_icon', 'https://cdn-game-mcp.gambo.ai/edfceaf7-96d4-48f9-bf2b-204ca09edfe2/images/loading_turtle_icon.png')
     
-    // 等待基本素材加载完成后再创建加载界面
+    // 기본 자료 로드가 완료된 후 로딩 화면을 생성합니다.
     this.load.once('complete', () => {
       this.createLoadingUI()
-      // 延迟开始加载游戏资源，实现黑屏等待效果
+      // 게임 리소스 로드를 지연하여 검은 화면 대기 효과를 구현합니다.
       this.startDelayedGameLoading()
     })
   }
 
   startDelayedGameLoading() {
     if (this.enableBlackScreen) {
-      // 如果启用黑屏等待，延迟指定时间后开始加载游戏资源
+      // 검은 화면 대기가 활성화된 경우, 지정된 시간 지연 후 게임 리소스 로드를 시작합니다.
       this.time.delayedCall(this.blackScreenDuration, () => {
         this.loadGameAssets()
       })
     } else {
-      // 否则立即开始加载游戏资源
+      // 그렇지 않으면 즉시 게임 리소스 로드를 시작합니다.
       this.loadGameAssets()
     }
   }
 
   createLoadingUI() {
-    // 创建加载界面背景
+    // 로딩 화면 배경 생성
     this.createBackground()
     
-    // 创建加载动画和进度显示
+    // 로딩 애니메이션 및 진행률 표시 생성
     this.createLoadingAnimation()
     
-    // 创建进度条
+    // 진행률 표시줄 생성
     this.createProgressBar()
     
-    // 创建加载文字
+    // 로딩 텍스트 생성
     this.createLoadingText()
     
-    // 如果启用黑屏等待，显示等待状态
+    // 검은 화면 대기가 활성화된 경우, 대기 상태 표시
     if (this.enableBlackScreen) {
       this.setWaitingState()
     }
   }
 
   setWaitingState() {
-    // 在等待期间，更新加载状态文字为等待状态
+    // 대기하는 동안 로딩 상태 텍스트를 대기 상태로 업데이트합니다.
     this.loadingStatus.setText('Preparing game...')
     
-    // 创建等待点动画
+    // 대기 점 애니메이션 생성
     this.createWaitingDots()
   }
 
@@ -76,10 +76,10 @@ export default class LoadingScene extends Phaser.Scene {
   }
 
   createBackground() {
-    // 创建加载界面背景
+    // 로딩 화면 배경 생성
     this.background = this.add.image(screenSize.width.value / 2, screenSize.height.value / 2, 'loading_screen_background')
     
-    // 计算缩放比例以适应屏幕
+    // 화면에 맞게 확대/축소 비율 계산
     const bgScaleX = screenSize.width.value / 1536
     const bgScaleY = screenSize.height.value / 1024
     const bgScale = Math.max(bgScaleX, bgScaleY)
@@ -87,18 +87,18 @@ export default class LoadingScene extends Phaser.Scene {
   }
 
   createLoadingAnimation() {
-    // 创建小乌龟图标用于加载动画
+    // 로딩 애니메이션에 사용할 작은 거북이 아이콘 생성
     const centerX = screenSize.width.value / 2
     const centerY = screenSize.height.value / 2
     
-    // 主要的乌龟图标
+    // 메인 거북이 아이콘
     this.mainTurtle = this.add.image(centerX, centerY - 50, 'loading_turtle_icon')
     
-    // 计算乌龟图标的缩放
-    const turtleScale = 0.2 // 适中大小
+    // 거북이 아이콘 확대/축소 계산
+    const turtleScale = 0.2 // 적당한 크기
     this.mainTurtle.setScale(turtleScale)
     
-    // 创建旋转动画让乌龟慢慢转动
+    // 거북이가 천천히 회전하는 애니메이션 생성
     this.tweens.add({
       targets: this.mainTurtle,
       rotation: Math.PI * 2,
@@ -107,7 +107,7 @@ export default class LoadingScene extends Phaser.Scene {
       ease: 'Linear'
     })
     
-    // 创建上下浮动动画
+    // 위아래로 움직이는 애니메이션 생성
     this.tweens.add({
       targets: this.mainTurtle,
       y: centerY - 30,
@@ -117,7 +117,7 @@ export default class LoadingScene extends Phaser.Scene {
       ease: 'Sine.easeInOut'
     })
     
-    // 创建围绕主乌龟的小乌龟们
+    // 메인 거북이 주위를 도는 작은 거북이들 생성
     this.createOrbitalTurtles(centerX, centerY - 50)
   }
 
@@ -131,21 +131,21 @@ export default class LoadingScene extends Phaser.Scene {
       const y = centerY + Math.sin(angle) * radius
       
       const turtle = this.add.image(x, y, 'loading_turtle_icon')
-      turtle.setScale(0.08) // 更小的尺寸
-      turtle.setAlpha(0.6) // 半透明效果
+      turtle.setScale(0.08) // 더 작은 크기
+      turtle.setAlpha(0.6) // 반투명 효과
       
       this.turtleIcons.push(turtle)
       
-      // 每个小乌龟绕着中心旋转，但速度不同
+      // 각 작은 거북이가 중심을 중심으로 회전하지만 속도는 다릅니다.
       this.tweens.add({
         targets: turtle,
         rotation: Math.PI * 2,
-        duration: 4000 + i * 500, // 不同速度
+        duration: 4000 + i * 500, // 다른 속도
         repeat: -1,
         ease: 'Linear'
       })
       
-      // 轨道运动
+      // 궤도 운동
       this.tweens.add({
         targets: turtle,
         x: centerX + Math.cos(angle + Math.PI * 2) * radius,
@@ -167,25 +167,25 @@ export default class LoadingScene extends Phaser.Scene {
     const centerX = screenSize.width.value / 2
     const centerY = screenSize.height.value / 2
     
-    // 进度条位置
+    // 진행률 표시줄 위치
     const barY = centerY + 120
     const barWidth = 400
     const barHeight = 20
     
-    // 进度条背景
+    // 진행률 표시줄 배경
     this.progressBg = this.add.rectangle(centerX, barY, barWidth, barHeight, 0x2c3e50)
     this.progressBg.setStrokeStyle(3, 0x34495e)
     
-    // 进度条填充
+    // 진행률 표시줄 채우기
     this.progressBar = this.add.rectangle(centerX - barWidth/2, barY, 0, barHeight - 4, 0x3498db)
     this.progressBar.setOrigin(0, 0.5)
     
-    // 进度条光泽效果
+    // 진행률 표시줄 광택 효과
     this.progressGlow = this.add.rectangle(centerX - barWidth/2, barY, 0, barHeight - 4, 0x5dade2)
     this.progressGlow.setOrigin(0, 0.5)
     this.progressGlow.setAlpha(0.7)
     
-    // 进度百分比文字
+    // 진행률 백분율 텍스트
     this.progressText = this.add.text(centerX, barY + 40, '0%', {
       fontFamily: 'Arial, sans-serif',
       fontSize: '24px',
@@ -194,7 +194,7 @@ export default class LoadingScene extends Phaser.Scene {
       align: 'center'
     }).setOrigin(0.5)
     
-    // 添加文字阴影
+    // 텍스트 그림자 추가
     this.progressText.setStroke('#ffffff', 4)
     this.progressText.setShadow(2, 2, '#000000', 0.3)
   }
@@ -203,7 +203,7 @@ export default class LoadingScene extends Phaser.Scene {
     const centerX = screenSize.width.value / 2
     const centerY = screenSize.height.value / 2
     
-    // 主加载文字
+    // 메인 로딩 텍스트
     this.loadingTitle = this.add.text(centerX, centerY - 150, 'Beach Turtle Rescue', {
       fontFamily: 'Arial, sans-serif',
       fontSize: '36px',
@@ -215,7 +215,7 @@ export default class LoadingScene extends Phaser.Scene {
     this.loadingTitle.setStroke('#ffffff', 6)
     this.loadingTitle.setShadow(3, 3, '#000000', 0.5)
     
-    // 加载状态文字
+    // 로딩 상태 텍스트
     this.loadingStatus = this.add.text(centerX, centerY + 200, 'Loading game assets...', {
       fontFamily: 'Arial, sans-serif',
       fontSize: '18px',
@@ -223,19 +223,19 @@ export default class LoadingScene extends Phaser.Scene {
       align: 'center'
     }).setOrigin(0.5)
     
-    // 创建加载点动画
+    // 로딩 점 애니메이션 생성
     this.createLoadingDots()
   }
 
   createLoadingDots() {
-    // 在状态文字后添加动态的点点点效果
+    // 상태 텍스트 뒤에 동적인 점 효과 추가
     this.loadingDots = 0
     this.loadingTimer = this.time.addEvent({
       delay: 500,
       callback: () => {
         this.loadingDots = (this.loadingDots + 1) % 4
         const dots = '.'.repeat(this.loadingDots)
-        // 只有在不是等待状态时才更新为"Loading game assets"
+        // 대기 상태가 아닐 때만 "Loading game assets"으로 업데이트
         if (!this.enableBlackScreen || this.load.isLoading()) {
           this.loadingStatus.setText(`Loading game assets${dots}`)
         }
@@ -245,18 +245,18 @@ export default class LoadingScene extends Phaser.Scene {
   }
 
   loadGameAssets() {
-    // 清理等待阶段的点动画
+    // 대기 단계의 점 애니메이션 정리
     if (this.waitingDotTimer) {
       this.waitingDotTimer.destroy()
     }
     
-    // 更新状态文字为正在加载
+    // 상태 텍스트를 로딩 중으로 업데이트
     this.loadingStatus.setText('Loading game assets...')
     
-    // 创建一个新的加载器来加载游戏资源
+    // 게임 리소스를 로드할 새로운 로더 생성
     const gameLoader = this.load
     
-    // 监听加载进度
+    // 로딩 진행 상황 감지
     gameLoader.on('progress', (progress) => {
       this.updateProgress(progress * 100)
     })
@@ -265,10 +265,10 @@ export default class LoadingScene extends Phaser.Scene {
       this.onLoadComplete()
     })
     
-    // 加载所有游戏需要的素材
+    // 모든 게임에 필요한 자료 로드
     this.loadAllGameAssets(gameLoader)
     
-    // 开始加载
+    // 로드 시작
     gameLoader.start()
   }
 
@@ -280,17 +280,17 @@ export default class LoadingScene extends Phaser.Scene {
   updateProgress(progress) {
     this.loadingProgress = Math.min(progress, 100)
     
-    // 更新进度条
+    // 진행률 표시줄 업데이트
     const barWidth = 400
     const fillWidth = (this.loadingProgress / 100) * barWidth
     
     this.progressBar.width = fillWidth
     this.progressGlow.width = fillWidth
     
-    // 更新百分比文字
+    // 백분율 텍스트 업데이트
     this.progressText.setText(`${Math.floor(this.loadingProgress)}%`)
     
-    // 添加进度条填充动画
+    // 진행률 표시줄 채우기 애니메이션 추가
     if (fillWidth > 0) {
       this.tweens.add({
         targets: this.progressGlow,
@@ -301,7 +301,7 @@ export default class LoadingScene extends Phaser.Scene {
       })
     }
     
-    // 根据进度更新加载状态文字
+    // 진행률에 따라 로딩 상태 텍스트 업데이트
     if (this.loadingProgress < 25) {
       this.updateLoadingStatus('Loading backgrounds')
     } else if (this.loadingProgress < 50) {
@@ -322,16 +322,16 @@ export default class LoadingScene extends Phaser.Scene {
   }
 
   onLoadComplete() {
-    // 停止加载点动画
+    // 로딩 점 애니메이션 중지
     if (this.loadingTimer) {
       this.loadingTimer.destroy()
     }
     
-    // 更新最终状态
+    // 최종 상태 업데이트
     this.updateProgress(100)
     this.loadingStatus.setText('Loading complete!')
     
-    // 添加完成动画
+    // 완료 애니메이션 추가
     this.tweens.add({
       targets: [this.mainTurtle, ...this.turtleIcons],
       scale: { from: this.mainTurtle.scale, to: this.mainTurtle.scale * 1.2 },
@@ -340,7 +340,7 @@ export default class LoadingScene extends Phaser.Scene {
       ease: 'Back.easeOut'
     })
     
-    // 短暂延迟后进入主菜单
+    // 짧은 지연 후 메인 메뉴로 이동
     this.time.delayedCall(1500, () => {
       this.scene.start('MainMenuScene')
     })

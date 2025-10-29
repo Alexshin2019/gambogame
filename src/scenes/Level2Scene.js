@@ -5,10 +5,10 @@ export default class Level2Scene extends GameScene {
   constructor() {
     super({ key: 'Level2Scene' })
     
-    // 关卡2配置：中等难度
+    // 레벨 2 설정: 보통 난이도
     this.levelConfig = {
-      timeLimit: 150,        // 2.5分钟
-      trashTypes: 5,         // 5种垃圾
+      timeLimit: 150,        // 2.5분
+      trashTypes: 5,         // 5가지 쓰레기
       levelName: 'Tidal Pool',
       difficulty: 'Medium',
       nextLevel: 'Level3Scene'
@@ -23,7 +23,7 @@ export default class Level2Scene extends GameScene {
 
   createUI() {
     super.createUI()
-    // 关卡信息文字已删除，保持UI清爽
+    // 레벨 정보 텍스트 삭제됨, UI 깔끔하게 유지
   }
 
   victory() {
@@ -96,7 +96,7 @@ export default class Level2Scene extends GameScene {
     }).setOrigin(0.5).setInteractive()
     retryButton.setDepth(103)
 
-    // 设置悬停效果 - 分别设置以避免数组引用问题
+    // 호버 효과 설정 - 배열 참조 문제 방지를 위해 개별적으로 설정
     nextButton.on('pointerover', () => nextButton.setScale(1.1))
     nextButton.on('pointerout', () => nextButton.setScale(1.0))
     

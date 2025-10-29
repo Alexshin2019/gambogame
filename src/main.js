@@ -30,15 +30,15 @@ const config = {
   },
   pixelArt: renderConfig.pixelArt.value,
   scene: [
-    LoadingScene,       // 加载界面（启动场景）
-    MainMenuScene,      // 主菜单
-    LevelSelectScene,   // 关卡选择
-    GameScene,          // 原始游戏场景（保留向后兼容）
-    Level1Scene,        // 关卡1：海滩清理
-    Level2Scene,        // 关卡2：潮池
-    Level3Scene,        // 关卡3：岩石海岸
-    Level4Scene,        // 关卡4：暴风雨清理
-    Level5Scene         // 关卡5：珊瑚礁
+    LoadingScene,       // 로딩 화면 (시작 장면)
+    MainMenuScene,      // 메인 메뉴
+    LevelSelectScene,   // 레벨 선택
+    GameScene,          // 원본 게임 장면 (하위 호환성 유지)
+    Level1Scene,        // 레벨 1: 해변 청소
+    Level2Scene,        // 레벨 2: 갯벌
+    Level3Scene,        // 레벨 3: 바위 해안
+    Level4Scene,        // 레벨 4: 폭풍우 청소
+    Level5Scene         // 레벨 5: 산호초
   ],
 }
 

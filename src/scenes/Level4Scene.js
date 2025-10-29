@@ -5,10 +5,10 @@ export default class Level4Scene extends GameScene {
   constructor() {
     super({ key: 'Level4Scene' })
     
-    // 关卡4配置：专家难度
+    // 레벨 4 설정: 전문가 난이도
     this.levelConfig = {
-      timeLimit: 90,         // 1.5分钟
-      trashTypes: 8,         // 全部8种垃圾（包含新增的玻璃瓶和铝箱纸）
+      timeLimit: 90,         // 1.5분
+      trashTypes: 8,         // 모든 8가지 쓰레기 (새로운 유리병 및 알루미늄 상자 포함)
       levelName: 'Storm Cleanup',
       difficulty: 'Expert',
       nextLevel: 'Level5Scene'
@@ -18,14 +18,14 @@ export default class Level4Scene extends GameScene {
   init() {
     super.init()
     this.timeLeft = this.levelConfig.timeLimit
-    // 使用全部8种垃圾类型
+    // 모든 8가지 쓰레기 유형 사용
     this.trashTypes = this.trashTypes.slice(0, this.levelConfig.trashTypes)
   }
 
   createUI() {
     super.createUI()
     
-    // 添加紧急提示（保留，因为这是游戏提示信息）
+    // 긴급 알림 추가 (게임 힌트이므로 유지)
     this.add.text(screenSize.width.value / 2, 130, 
       'URGENT: Storm has washed more trash ashore!', {
       fontFamily: 'Arial, sans-serif',
@@ -107,7 +107,7 @@ export default class Level4Scene extends GameScene {
     }).setOrigin(0.5).setInteractive()
     retryButton.setDepth(103)
 
-    // 设置悬停效果 - 分别设置以避免数组引用问题
+    // 호버 효과 설정 - 배열 참조 문제 방지를 위해 개별적으로 설정
     nextButton.on('pointerover', () => nextButton.setScale(1.1))
     nextButton.on('pointerout', () => nextButton.setScale(1.0))
     
